@@ -3,9 +3,9 @@ function addEventToLockaStorage() {
         eventName = document.querySelector('.create__input'),
         participants = document.querySelector('.participants'),
         day = document.querySelector('.day'),
-        dayValue = day.value,
-        time = document.querySelector('.time'),
-        timeValue = time.value;
+        time = document.querySelector('.time');
+
+    const errorRow = document.querySelector('.create__error');
 
     const dayToNum = {
             Monday: 1,
@@ -27,8 +27,36 @@ function addEventToLockaStorage() {
         };
 
     createBtn.addEventListener('click', () => {
-        console.log(dayToNum.dayValue);
+        const eventData = {
+            event: eventName.value,
+            participants: participants.value
+        };
+
+
+        if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {
+            showErrorRow(errorRow);
+        } else {
+            localStorage.setItem(`${dayToNum[day.value] + timeToNum[time.value]}`,
+                `${eventData.event}, ${eventData.participants}`);
+        }
+
     });
+
+    day.addEventListener('change', () => {
+        hideErrorRow(errorRow);
+    });
+
+    time.addEventListener('change', () => {
+        hideErrorRow(errorRow);
+    });
+}
+
+function showErrorRow(errorRow) {
+    errorRow.classList.add('create__error--active');
+}
+
+function hideErrorRow(errorRow) {
+    errorRow.classList.remove('create__error--active');
 }
 
 export default addEventToLockaStorage;

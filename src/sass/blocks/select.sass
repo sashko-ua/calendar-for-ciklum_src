@@ -3,3 +3,31 @@
     border-radius: 7px
     padding: 5px 10px
     cursor: pointer
+
+.selectBox
+    position: relative
+    min-width: 165px
+    & select
+        width: 100%
+        font-weight: bold
+
+.overSelect
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+
+.checkboxes
+    position: absolute
+    display: none
+    border: 1px #dadada solid
+    background-color: #fff
+    padding: 5px 15px
+    width: 165px
+    & label
+        display: block
+    & label:hover
+        background-color: #99ccff
+    &--active
+        display: block

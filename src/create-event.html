@@ -13,7 +13,7 @@
 <body>
     <section class="create">
         <div class="create__inner">
-            <div class="create__error">Error! The room is occupied at the selected time</div>
+            <div class="create__error"></div>
             <div class="create__row">
                 <div class="create__row-name">Name if the event:</div>
                 <input class="create__input"></input>
@@ -21,14 +21,35 @@
             <div class="create__row">
                 <div class="create__row-name">Participants:</div>
 
-                <select class="select participants">
-                    <option value="All members">All members</option>
-                    <option value="Sashko">Sashko</option>
-                    <option value="Oksana">Oksana</option>
-                    <option value="Andrii">Andrii</option>
-                    <option value="Sergey">Sergey</option>
-                    <option value="Kolia">Kolia</option>
-                </select>
+                <!-- <select class="select participants">
+                    <option select value="All members">All members</option>
+                    <option select value="Sashko">Sashko</option>
+                    <option select value="Oksana">Oksana</option>
+                    <option select value="Andrii">Andrii</option>
+                    <option select value="Sergey">Sergey</option>
+                    <option select value="Kolia">Kolia</option>
+                </select> -->
+
+                <form class="form">
+                    <div class="selectBox">
+                        <select class="select">
+                            <option class="participants">Select participants</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div class="checkboxes">
+                        <label class="label" for="one">
+                            <input type="checkbox" id="one" />Sashko</label>
+                        <label class="label" for="two">
+                            <input type="checkbox" id="two" />Oksana</label>
+                        <label class="label" for="three">
+                            <input type="checkbox" id="three" />Andrii</label>
+                        <label class="label" for="four">
+                            <input type="checkbox" id="four" />Sergey</label>
+                        <label class="label" for="five">
+                            <input type="checkbox" id="five" />Kolia</label>
+                    </div>
+                </form>
             </div>
             <div class="create__row">
                 <div class="create__row-name">Day:</div>
@@ -59,8 +80,8 @@
 
             <div class="create__btns">
                 <button class="btn btn__cansel">Cansel</button>
-                <a href="index.html"></a>
-                <button class="btn btn__create">Create</button>
+                <a href="index.html"><button class="btn btn__create">Create</button></a>
+
             </div>
         </div>
     </section>

@@ -1,3 +1,5 @@
+import selectParticipants from "./selectParticipants";
+
 function addEventToLockaStorage() {
     const createBtn = document.querySelector('.btn__create'),
         eventName = document.querySelector('.create__input'),
@@ -26,20 +28,26 @@ function addEventToLockaStorage() {
             '18.00': 54,
         };
 
-    createBtn.addEventListener('click', () => {
+    selectParticipants(participants);
+
+    createBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         const eventData = {
             event: eventName.value,
             participants: participants.value
         };
 
+        if (eventData.event === '') {
+            eventData.event = 'Meeting';
+        }
 
         if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {
-            showErrorRow(errorRow);
+            showErrorRow(errorRow, 'Error! The room is occupied at the selected time');
         } else {
             localStorage.setItem(`${dayToNum[day.value] + timeToNum[time.value]}`,
                 `${eventData.event}, ${eventData.participants}`);
+            window.history.back();
         }
-
     });
 
     day.addEventListener('change', () => {
@@ -51,8 +59,10 @@ function addEventToLockaStorage() {
     });
 }
 
-function showErrorRow(errorRow) {
+function showErrorRow(errorRow, errorText) {
+    errorRow.innerHTML = errorText;
     errorRow.classList.add('create__error--active');
+
 }
 
 function hideErrorRow(errorRow) {

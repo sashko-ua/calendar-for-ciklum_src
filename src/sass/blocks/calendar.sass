@@ -13,6 +13,7 @@
         font-size: 20px
         font-weight: bold
     &__body
+        position: relative
         display: flex
         align-items: center
         justify-content: center
@@ -20,3 +21,17 @@
         padding: 5px 10px
         &--active
             background-color: #99ffd5
+        &--filtered
+            background-color: #ffff83
+        &:hover
+            .delete
+                opacity: 1
+
+    .delete
+        position: absolute
+        right: 5%
+        opacity: 0
+        cursor: pointer
+        transition: .2s all linear
+        &:hover
+            color: red

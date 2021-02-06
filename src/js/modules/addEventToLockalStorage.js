@@ -40,7 +40,7 @@ function addEventToLockaStorage() {
         };
 
         if (eventData.event === '') {
-            eventData.event = 'Meeting';
+            eventData.event = 'Meestup';
         }
 
         if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {

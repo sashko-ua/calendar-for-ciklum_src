@@ -5,7 +5,12 @@ function addEventToSchedule() {
         if (i == 12 || i == 18 || i == 24 || i == 30 || i == 36 || i == 42 || i == 48 || i == 54) {
             continue;
         } else {
-            cells[i].innerHTML = localStorage.getItem(`${i}`);
+            const getEvent = JSON.parse(localStorage.getItem(`${i}`));
+
+            if (getEvent != null) {
+                cells[i].innerHTML = getEvent.event;
+                cells[i].classList.add('calendar__body--active');
+            }
         }
     }
 }

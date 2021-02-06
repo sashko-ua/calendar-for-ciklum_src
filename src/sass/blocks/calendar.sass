@@ -2,19 +2,21 @@
     &__inner
         display: grid
         grid-template-columns: repeat(6, 1fr)
-        grid-template-rows: repeat(10, 50px)
+        grid-template-rows: repeat(10, minmax(50px, auto))
         border: .5px solid #000
-        div
-            border: .5px solid #000
     &__header
-        background-color: #a8a8a8
         display: flex
         align-items: center
         justify-content: center
+        border: .5px solid #000
+        background-color: #a8a8a8
         font-size: 20px
         font-weight: bold
     &__body
         display: flex
         align-items: center
         justify-content: center
-        cursor: pointer
+        border: .5px solid #000
+        padding: 5px 10px
+        &--active
+            background-color: #99ffd5

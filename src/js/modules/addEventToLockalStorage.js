@@ -5,7 +5,8 @@ function addEventToLockaStorage() {
         eventName = document.querySelector('.create__input'),
         participants = document.querySelector('.participants'),
         day = document.querySelector('.day'),
-        time = document.querySelector('.time');
+        time = document.querySelector('.time'),
+        overSelect = document.querySelector('.overSelect');
 
     const errorRow = document.querySelector('.create__error');
 
@@ -33,6 +34,7 @@ function addEventToLockaStorage() {
     createBtn.addEventListener('click', (e) => {
         e.preventDefault();
         const eventData = {
+            id: dayToNum[day.value] + timeToNum[time.value],
             event: eventName.value,
             participants: participants.value
         };
@@ -43,9 +45,10 @@ function addEventToLockaStorage() {
 
         if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {
             showErrorRow(errorRow, 'Error! The room is occupied at the selected time');
+        } else if (eventData.participants == 'Select participants') {
+            showErrorRow(errorRow, 'Error! Select participants');
         } else {
-            localStorage.setItem(`${dayToNum[day.value] + timeToNum[time.value]}`,
-                `${eventData.event}, ${eventData.participants}`);
+            localStorage.setItem(`${dayToNum[day.value] + timeToNum[time.value]}`, JSON.stringify(eventData));
             window.history.back();
         }
     });
@@ -55,6 +58,10 @@ function addEventToLockaStorage() {
     });
 
     time.addEventListener('change', () => {
+        hideErrorRow(errorRow);
+    });
+
+    overSelect.addEventListener('change', () => {
         hideErrorRow(errorRow);
     });
 }

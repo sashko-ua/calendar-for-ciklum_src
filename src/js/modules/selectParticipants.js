@@ -1,6 +1,5 @@
 function selectParticipants(participantsSelector) {
-    const selectBox = document.querySelector('.selectBox'),
-        checkboxes = document.querySelector('.checkboxes'),
+    const checkboxes = document.querySelector('.checkboxes'),
         inputs = document.querySelectorAll('.checkboxes input');
 
     window.addEventListener('click', (e) => {
@@ -10,10 +9,12 @@ function selectParticipants(participantsSelector) {
     });
 
     const participantsList = [];
+    const errorRow = document.querySelector('.create__error');
 
     inputs.forEach(input => {
         input.addEventListener('change', () => {
             checkboxes.classList.remove('checkboxes--active');
+            errorRow.classList.remove('create__error--active');
 
             if (input.getAttribute('type') === 'checkbox' && input.checked === true) {
                 participantsList.push(input.nextSibling.textContent);
@@ -21,6 +22,10 @@ function selectParticipants(participantsSelector) {
                 const index = participantsList.indexOf(input.nextSibling.textContent);
 
                 participantsList.splice(index, 1);
+
+                if (participantsList.length == 0) {
+                    participantsSelector.innerHTML = 'Select participants';
+                }
             }
 
             for (let i = 0; i < participantsList.length; i++) {

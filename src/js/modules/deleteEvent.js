@@ -4,7 +4,8 @@ function deleteEvent() {
     const deleteBtn = document.querySelectorAll('.delete'),
         modal = document.querySelector('.modal'),
         no = document.querySelector('.no'),
-        yes = document.querySelector('.yes');
+        yes = document.querySelector('.yes'),
+        eventName = document.querySelector('.event-name');
 
     let id;
 
@@ -12,6 +13,9 @@ function deleteEvent() {
         element.addEventListener('click', (e) => {
             id = e.target.parentElement.attributes[1].value;
             modal.classList.add('modal--active');
+
+            const name = JSON.parse(localStorage.getItem(id));
+            eventName.innerHTML = name.event;
         });
     });
 

@@ -17,8 +17,8 @@
                 <h1 class="title">Clendar</h1>
 
                 <div class="header__triggers">
-                    <select class="select filter">
-                        <option value="All members">All members</option>
+                    <select class=" header__btn select filter">
+                        <option value="All members">All events</option>
                         <option value="Sashko">Sashko</option>
                         <option value="Oksana">Oksana</option>
                         <option value="Andrii">Andrii</option>
@@ -26,7 +26,7 @@
                         <option value="Kolia">Kolia</option>
                     </select>
 
-                    <a href="create-event.html"><button class="btn">+ New Event</button></a>
+                    <a href="create-event.html"><button class="btn header__btn ">+ New Event</button></a>
 
                 </div>
             </div>
@@ -42,7 +42,7 @@
     <div class="modal">
         <div class="modal__overlay">
             <div class="modal__inner">
-                <div class="modal__title">Are you sure want to delete 'lol' event?</div>
+                <div class="modal__title">Are you sure want to delete <span class="event-name"></span>?</div>
 
                 <div class="modal__triggers">
                     <button class="btn modal__btn no">NO</button>

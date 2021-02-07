@@ -2,6 +2,7 @@ import selectParticipants from "./selectParticipants";
 
 function addEventToLockaStorage() {
     const createBtn = document.querySelector('.btn__create'),
+        canselBtn = document.querySelector('.btn__cansel'),
         eventName = document.querySelector('.create__input'),
         participants = document.querySelector('.participants'),
         day = document.querySelector('.day'),
@@ -43,14 +44,18 @@ function addEventToLockaStorage() {
             eventData.event = 'Meestup';
         }
 
-        if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {
-            showErrorRow(errorRow, 'Error! The room is occupied at the selected time');
-        } else if (eventData.participants == 'Select participants') {
+        if (eventData.participants == 'Select participants') {
             showErrorRow(errorRow, 'Error! Select participants');
+        } else if (localStorage.getItem(`${dayToNum[day.value] + timeToNum[time.value]}`)) {
+            showErrorRow(errorRow, 'Error! The room is occupied at the selected time');
         } else {
             localStorage.setItem(`${dayToNum[day.value] + timeToNum[time.value]}`, JSON.stringify(eventData));
             window.history.back();
         }
+    });
+
+    canselBtn.addEventListener('click', () => {
+        window.history.back();
     });
 
     day.addEventListener('change', () => {
